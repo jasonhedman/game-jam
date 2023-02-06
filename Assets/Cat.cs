@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Mouse : Player
+public class Cat : Player
 {
+    void Attack()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
         RunPhysics();
 
-        if (Input.GetKeyUp(KeyCode.M))
+        if (Input.GetKeyUp(KeyCode.C))
         {
-            //Vector3 ray_start = new Vector3(rb.position.x, rb.position.y - , 0);
-            //RaycastHit2D floor = Physics2D.Raycast(ray_start, Vector2.down, 0.2f);
-
             if (grounded)
             {
                 grounded = false;
@@ -22,9 +23,7 @@ public class Mouse : Player
             }
             else
             {
-                speed += 1;
-                direction *= -1f;
-                sr.flipX = !sr.flipX;
+                Attack();
             }
         }
     }

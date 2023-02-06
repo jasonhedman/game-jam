@@ -46,6 +46,7 @@ public class SlimeAnimation : MonoBehaviour
 
     IEnumerator AnimateLand()
     {
+        StopCoroutine(walkAnimation);
         for (int i = 0; i < landFrames.Length; i++)
         {
             slimeRenderer.sprite = landFrames[i];

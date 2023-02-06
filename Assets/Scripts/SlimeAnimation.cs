@@ -14,18 +14,34 @@ public class SlimeAnimation : MonoBehaviour
 
     float framesPerSecond = 10;
 
+    Coroutine walkAnimation;
+
     // Start is called before the first frame update
     void Start()
     {
         slimeRenderer = GetComponent<SpriteRenderer>();
-        StartCoroutine(AnimateWalk());
+        walkAnimation = StartCoroutine(AnimateWalk());
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if()
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StopCoroutine(walkAnimation);
+            //StartCoroutine(AnimateJump());
+            //StartCoroutine(AnimateWalk());
+        }
+    }
+
+    IEnumerator AnimateJump()
+    {
+        for(int i = 0; i < jumpFrames.Length; i++)
+        {
+            slimeRenderer.sprite = jumpFrames[i];
+            yield return new WaitForSeconds(1 / framesPerSecond);
+        }
+    }
 
     IEnumerator AnimateWalk()
     {

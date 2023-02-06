@@ -11,12 +11,14 @@ public class Mouse : MonoBehaviour
     public float jump_height = 10;
 
     internal Rigidbody2D rb;
+    internal SpriteRenderer sr;
 
     internal bool grounded = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         speed = starting_speed;
         direction = 1;
@@ -50,6 +52,8 @@ public class Mouse : MonoBehaviour
             {
                 speed += 1;
                 direction *= -1f;
+                sr.flipX = !sr.flipX;
+
             }
         }
     }
@@ -67,6 +71,11 @@ public class Mouse : MonoBehaviour
         if (collision.gameObject.CompareTag("Stage"))
         {
             grounded = true;
+        }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            direction *= -1;
+            sr.flipX = !sr.flipX;
         }
     }
 }

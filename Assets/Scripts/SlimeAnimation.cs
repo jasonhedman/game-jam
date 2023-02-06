@@ -9,6 +9,8 @@ public class SlimeAnimation : MonoBehaviour
 
     public Sprite[] jumpFrames;
 
+    public Sprite[] landFrames;
+
     public Sprite[] walkFrames;
     int walkFrame = 0;
 
@@ -29,8 +31,7 @@ public class SlimeAnimation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StopCoroutine(walkAnimation);
-            //StartCoroutine(AnimateJump());
-            //StartCoroutine(AnimateWalk());
+            StartCoroutine(AnimateJump());
         }
     }
 
@@ -41,6 +42,16 @@ public class SlimeAnimation : MonoBehaviour
             slimeRenderer.sprite = jumpFrames[i];
             yield return new WaitForSeconds(1 / framesPerSecond);
         }
+    }
+
+    IEnumerator AnimateLand()
+    {
+        for (int i = 0; i < landFrames.Length; i++)
+        {
+            slimeRenderer.sprite = landFrames[i];
+            yield return new WaitForSeconds(1 / framesPerSecond);
+        }
+        walkAnimation = StartCoroutine(AnimateWalk());
     }
 
     IEnumerator AnimateWalk()

@@ -14,6 +14,7 @@ public class Mouse : MonoBehaviour
     internal SpriteRenderer sr;
 
     internal bool grounded = true;
+    internal float cayote_timer = 0.25f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,15 @@ public class Mouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (cayote_timer > 0)
+        {
+            cayote_timer -= Time.deltaTime;
+            if (!(cayote_timer > 0))
+            {
+                grounded = false;
+            }
+        }
+
         transform.rotation = Quaternion.identity;
         float x_vel = rb.velocity.x;
         x_vel = speed * direction;
@@ -62,7 +72,7 @@ public class Mouse : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Stage"))
         {
-            grounded = false;
+            cayote_timer = 0.25f;
         }
     }
 

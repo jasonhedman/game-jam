@@ -28,7 +28,7 @@ public class SlimeAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             StopCoroutine(walkAnimation);
             StartCoroutine(AnimateJump());
@@ -64,6 +64,14 @@ public class SlimeAnimation : MonoBehaviour
             walkFrame = (walkFrame + 1) % walkFrames.Length;
             // wait for next iteration
             yield return new WaitForSeconds(1 / framesPerSecond);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Stage"))
+        {
+            StartCoroutine(AnimateLand());
         }
     }
 }

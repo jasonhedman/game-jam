@@ -25,6 +25,7 @@ public class Mouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = Quaternion.identity;
         float x_vel = rb.velocity.x;
         x_vel = speed * direction;
         rb.velocity = new Vector3(x_vel, rb.velocity.y, 0);

@@ -63,7 +63,6 @@ public class Mouse : MonoBehaviour
                 speed += 1;
                 direction *= -1f;
                 sr.flipX = !sr.flipX;
-
             }
         }
     }
@@ -72,7 +71,7 @@ public class Mouse : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Stage"))
         {
-            cayote_timer = 0.25f;
+            cayote_timer = 0.2f;
         }
     }
 
@@ -81,6 +80,7 @@ public class Mouse : MonoBehaviour
         if (collision.gameObject.CompareTag("Stage"))
         {
             grounded = true;
+            cayote_timer = 0;
         }
         if (collision.gameObject.CompareTag("Wall"))
         {

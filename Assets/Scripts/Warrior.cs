@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Mouse : MonoBehaviour
+public class Warrior : MonoBehaviour
 {
     public float starting_speed = 5;
     internal float speed;
@@ -11,14 +10,12 @@ public class Mouse : MonoBehaviour
     public float jump_height = 10;
 
     internal Rigidbody2D rb;
-    internal SpriteRenderer sr;
 
     internal bool grounded = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         speed = starting_speed;
         direction = 1;
@@ -27,7 +24,6 @@ public class Mouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.identity;
         float x_vel = rb.velocity.x;
         x_vel = speed * direction;
         rb.velocity = new Vector3(x_vel, rb.velocity.y, 0);
@@ -48,13 +44,6 @@ public class Mouse : MonoBehaviour
                 grounded = false;
                 rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
             }
-            else
-            {
-                speed += 1;
-                direction *= -1f;
-                sr.flipX = !sr.flipX;
-
-            }
         }
     }
 
@@ -72,11 +61,5 @@ public class Mouse : MonoBehaviour
         {
             grounded = true;
         }
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            direction *= -1;
-            sr.flipX = !sr.flipX;
-        }
     }
 }
-

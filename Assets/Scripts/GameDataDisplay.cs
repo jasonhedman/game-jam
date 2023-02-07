@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameDataDisplay : MonoBehaviour
 {
+    public TMP_Text timeText;
+    public float timeRemaining = 60;
+    public bool timerOn = false;
+
     public TMP_Text score;
     public int mouseScore = 0;
     public int catScore = 0;
 
     public TMP_Text level;
     public int levelCount = 1;
-
-    public TMP_Text timeText;
-    public float timeRemaining = 60;
-    public bool timerOn = false;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -46,8 +46,9 @@ public class GameDataDisplay : MonoBehaviour
 
             else
             {
-                timeRemaining = 0;
-                timerOn = false;
+                levelFinished(true);
+                timeRemaining = 60;
+                timerOn = true;
             }
 
             if (timeRemaining < 10)
@@ -65,4 +66,15 @@ public class GameDataDisplay : MonoBehaviour
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    void levelFinished(bool mouseWin)
+    {
+        if (mouseWin)
+        {
+            mouseScore++;
+        }
+        else
+        {
+            catScore++;
+        }
+    }
 }

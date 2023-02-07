@@ -13,7 +13,7 @@ public class Cat : Player
     void Attack()
     {
         RaycastHit2D line = Physics2D.CircleCast(new Vector2(transform.position.x,
-            transform.position.y - 0.25f), 1.25f, new Vector2(direction, 0), .8f, hitbox);
+            transform.position.y - 0.25f), .75f, new Vector2(direction, 0), .5f, hitbox);
 
         if (line.collider != null)
         {

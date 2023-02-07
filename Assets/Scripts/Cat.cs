@@ -54,7 +54,7 @@ public class Cat : Player
                 }
                 charge = 0;
                 grounded = false;
-                cayote_timer = -0.2f;
+                coyote_timer = -0.2f;
                 rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
             }
             else

@@ -70,7 +70,7 @@ public abstract class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(gameObject);
-        if (collision.gameObject.CompareTag("Wall") || (collision.gameObject.CompareTag("Player") && cayote_timer <= 0))
+        if (collision.gameObject.CompareTag("Wall") || (collision.gameObject.CompareTag("Player") && coyote_timer <= 0))
         {
             grounded = true;
             coyote_timer = 0.1f;

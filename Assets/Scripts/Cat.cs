@@ -14,10 +14,8 @@ public class Cat : Player
     {
         RaycastHit2D line = Physics2D.CircleCast(transform.position, 1, new Vector2(direction, 0), 0.5f, hitbox);
         //RaycastHit2D line = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 20, hitbox);
-        Debug.Log("Attack");
         if (line.collider != null)
         {
-            Debug.Log(line.collider.gameObject);
             Destroy(line.collider.gameObject);
         }
     }

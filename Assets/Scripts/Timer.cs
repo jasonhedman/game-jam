@@ -6,38 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 60;
-    public bool timerOn = false;
+    public float timeRemaining = 2;
     public TMP_Text timeText;
 
     private void Start()
     {
-        timerOn = true;
         timeText.color = new Color32(255, 255, 255, 255);
     }
+
     void Update()
     {
-        if (timerOn)
+        if(timeRemaining <= 0)
         {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
-            }
-
-            else
-            {
-                timeRemaining = 0;
-                timerOn = false;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-
-            if(timeRemaining < 10)
+            Debug.Log("END");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            if (timeRemaining < 10)
             {
                 timeText.color = new Color32(255, 0, 15, 255);
             }
+            DisplayTime(timeRemaining);
         }
+        Debug.Log("Loop end");
     }
+     
     void DisplayTime(float display)
     {
         display += 1;

@@ -1021,9 +1021,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 256
-        width: 256
-        height: 256
+        y: 384
+        width: 255
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1042,9 +1042,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 256
+        y: 384
         width: 256
-        height: 256
+        height: 129
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1063,9 +1063,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1280
-        y: 256
-        width: 256
-        height: 256
+        y: 384
+        width: 251
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1195,9 +1195,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Level_1_256x256_19: 128477835189776891
+      Level_1_256x256_2: -5871628898940079882
       Level_1_256x256_10: 2718513996814743820
-      Level_1_256x256_38: 4265706248661453283
       Level_1_256x256_26: 1392019697758446801
       Level_1_256x256_27: 4308928161347384345
       Level_1_256x256_8: 8110766950150536484
@@ -1231,7 +1230,8 @@ TextureImporter:
       Level_1_256x256_0: -4050710359956972958
       Level_1_256x256_21: -6533029589929993351
       Level_1_256x256_1: 4694081222966674561
-      Level_1_256x256_2: -5871628898940079882
+      Level_1_256x256_19: 128477835189776891
+      Level_1_256x256_38: 4265706248661453283
       Level_1_256x256_5: 6432092734245894132
       Level_1_256x256_17: 4206299883402668752
   spritePackingTag: 

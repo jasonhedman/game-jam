@@ -76,7 +76,6 @@ public class CharacterAnimation : MonoBehaviour
     {
         float distToGround = GetComponent<BoxCollider2D>().bounds.extents.y;
         RaycastHit2D floorHit = Physics2D.Raycast(transform.position, Vector2.down, distToGround + 0.1f);
-        Debug.Log(floorHit.collider);
         return floorHit.collider != null;
     }
 }

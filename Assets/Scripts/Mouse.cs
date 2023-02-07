@@ -13,7 +13,7 @@ public class Mouse : Player
 
     protected override void AirMove()
     {
-        speed += 1;
+        speed += 1.2f;
         direction *= -1f;
         sr.flipX = !sr.flipX;
     }

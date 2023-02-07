@@ -12,9 +12,9 @@ public class Cat : Player
 
     void Attack()
     {
-        RaycastHit2D line = Physics2D.CircleCast(transform.position, 5f, new Vector2(direction, 0), 10, hitbox);
+        RaycastHit2D line = Physics2D.CircleCast(transform.position, 1, new Vector2(direction, 0), 0.5f, hitbox);
         //RaycastHit2D line = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 20, hitbox);
-
+        Debug.Log("Attack");
         if (line.collider != null)
         {
             Debug.Log(line.collider.gameObject);
@@ -29,7 +29,7 @@ public class Cat : Player
 
         if (Input.GetKey(jumpKey)) {
             charge += Time.deltaTime;
-            if (charge > .5)
+            if (charge > 1)
             {
                 speed = starting_speed / 4;
             }
@@ -42,6 +42,7 @@ public class Cat : Player
             }
             charge = 0;
         }
+        //if GetKeyUp()
     }
 
     protected override void AirMove()
@@ -49,5 +50,6 @@ public class Cat : Player
         Attack();
         attack_timer = 0.5f;
         speed = Mathf.Max(starting_speed, speed);
+        charge = 0;
     }
 }

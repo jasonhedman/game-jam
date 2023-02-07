@@ -41,11 +41,11 @@ public abstract class Player : MonoBehaviour
 
         if (speed > starting_speed)
         {
-            speed -= Time.deltaTime;
-            speed = Mathf.Min(starting_speed * 2f, speed);
+            speed -= Time.deltaTime / 2;
+            speed = Mathf.Min(starting_speed * 3f, speed);
         }
     }
-
+    
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);

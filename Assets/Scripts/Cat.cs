@@ -6,14 +6,15 @@ public class Cat : Player
 {
     internal float charge = 0;
     internal bool hitbox_exists = false;
-    internal float attack_timer = 0;
+    internal float attack_timer = 0f;
 
     public LayerMask hitbox;
 
     void Attack()
     {
-        RaycastHit2D line = Physics2D.CircleCast(transform.position, 1, new Vector2(direction, 0), 0.5f, hitbox);
-        //RaycastHit2D line = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 20, hitbox);
+        RaycastHit2D line = Physics2D.CircleCast(new Vector2(transform.position.x,
+            transform.position.y - 0.25f), 1.25f, new Vector2(direction, 0), .8f, hitbox);
+
         if (line.collider != null)
         {
             Destroy(line.collider.gameObject);
@@ -24,6 +25,11 @@ public class Cat : Player
     void Update()
     {
         RunPhysics();
+        if (attack_timer > 0)
+        {
+            attack_timer -= Time.deltaTime;
+            Attack();
+        }
 
         if (Input.GetKey(jumpKey)) {
             charge += Time.deltaTime;
@@ -32,15 +38,10 @@ public class Cat : Player
                 speed = starting_speed / 4;
             }
         }
-        if (!grounded)
+        if (charge > 1.5 && !grounded)
         {
-            if (charge > 1.5)
-            {
-                speed = starting_speed * 2;
-            }
-            charge = 0;
+            speed = starting_speed * 2;
         }
-        //if GetKeyUp()
     }
 
     protected override void AirMove()

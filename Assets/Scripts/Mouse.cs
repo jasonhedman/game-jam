@@ -17,7 +17,7 @@ public class Mouse : Player
 
             if (grounded)
             {
-                coyote_timer = -2f; // this is so when it leaves the ground cayote time is 0
+                //coyote_timer = -2f; // this is so when it leaves the ground cayote time is 0
                 grounded = false;
                 rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
             }

@@ -6,21 +6,12 @@ public class Cat : Player
 {
     internal float charge = 0;
     internal bool hitbox_exists = false;
-    internal float attack_timer = 0;
 
     public GameObject LeapHitbox;
 
     void Attack()
     {
-        Debug.Log("Attacking!");
-        RaycastHit2D swipe = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 45, new Vector2(0, direction), 2, 1 << 5);
-        Debug.DrawRay(transform.position, new Vector2(1, 1), Color.red, 2);
-        if (swipe.collider != null)
-        {
-            Debug.Log(swipe.collider);
-            Destroy(swipe.collider);
-        }
-
+        speed = Mathf.Max(starting_speed, speed);
         //Instantiate(LeapHitbox);
         //hitbox_exists = true;
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), LeapHitbox.GetComponent<Collider2D>());
@@ -35,12 +26,6 @@ public class Cat : Player
     void Update()
     {
         RunPhysics();
-
-        if (attack_timer > 0)
-        {
-            attack_timer -= Time.deltaTime;
-            Attack();
-        }
 
         //if (hitbox_exists)
         //{
@@ -75,10 +60,12 @@ public class Cat : Player
             else
             {
                 Attack();
-                attack_timer = 0.5f;
-                speed = Mathf.Max(starting_speed, speed); ();
             }
         }
     }
-}
 
+    protected override void AirMove()
+    {
+        
+    }
+}

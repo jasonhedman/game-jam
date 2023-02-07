@@ -29,9 +29,13 @@ public abstract class Player : MonoBehaviour
 
         if (Input.GetKeyUp(jumpKey))
         {
-            if(IsGrounded())
+            if (IsGrounded())
             {
                 Jump();
+            }
+            else
+            {
+                AirMove();
             }
         }
 
@@ -47,6 +51,8 @@ public abstract class Player : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
     }
 
+    protected abstract void AirMove();
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
@@ -60,7 +66,7 @@ public abstract class Player : MonoBehaviour
     bool IsGrounded()
     {
         float distToGround = GetComponent<BoxCollider2D>().bounds.extents.y;
-        RaycastHit2D floorHit = Physics2D.Raycast(transform.position, Vector2.down, distToGround + 0.1f);
+        RaycastHit2D floorHit = Physics2D.Raycast(transform.position, Vector2.down, distToGround + 0.25f);
         Debug.Log(floorHit.collider);
         return floorHit.collider != null;
     }

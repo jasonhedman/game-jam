@@ -13,11 +13,9 @@ public abstract class Player : MonoBehaviour
     internal SpriteRenderer sr;
 
     internal bool grounded = true;
-    //internal float coyote_timer = 0.25f;
 
     public KeyCode jumpKey;
 
-    // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -27,15 +25,6 @@ public abstract class Player : MonoBehaviour
 
     public void RunPhysics()
     {
-        //if (coyote_timer > 0)
-        //{
-        //    coyote_timer -= Time.deltaTime;
-        //    if (!(coyote_timer > 0))
-        //    {
-        //        grounded = false;
-        //    }
-        //}
-
         rb.velocity = new Vector3(speed * direction, rb.velocity.y, 0);
 
         if (Input.GetKeyUp(jumpKey))
@@ -58,26 +47,8 @@ public abstract class Player : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
     }
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Stage"))
-    //    {
-    //        coyote_timer = 0.2f;
-    //        if (coyote_timer < -1)
-    //        {
-    //            coyote_timer = 0;
-    //        }
-    //        else coyote_timer = 0.1f;
-    //    }
-    //}
-
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //if (collision.gameObject.CompareTag("Stage"))
-        //{
-        //    grounded = true;
-        //    //coyote_timer = 0;
-        //}
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
         {
             Vector3 diff = transform.position - collision.gameObject.transform.position;
@@ -89,7 +60,7 @@ public abstract class Player : MonoBehaviour
     bool IsGrounded()
     {
         float distToGround = GetComponent<BoxCollider2D>().bounds.extents.y;
-        RaycastHit2D floorHit = Physics2D.Raycast(transform.position, Vector2.down, distToGround + 5f);
+        RaycastHit2D floorHit = Physics2D.Raycast(transform.position, Vector2.down, distToGround + 0.1f);
         Debug.Log(floorHit.collider);
         return floorHit.collider != null;
     }

@@ -8,6 +8,7 @@ public class GameDataDisplay : MonoBehaviour
 {
     public float timeRemaining = 2;
     public TMP_Text timeText;
+    public GameObject hunter;
 
     private void Start()
     {
@@ -16,9 +17,14 @@ public class GameDataDisplay : MonoBehaviour
 
     void Update()
     {
-        if (timeRemaining <= 0)
+        if (Input.GetKey(KeyCode.T))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (timeRemaining <= 0)
+        {
+            Destroy(hunter);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         if (timeRemaining > 0)
         {

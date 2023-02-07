@@ -27,19 +27,19 @@ public class Cat : Player
     {
         RunPhysics();
 
-        if (hitbox_exists)
-        {
-            LeapHitbox.transform.position = transform.position;
-            if (grounded)
-            {
-                Destroy(LeapHitbox);
-                hitbox_exists = false;
-            }
-        }
+        //if (hitbox_exists)
+        //{
+        //    LeapHitbox.transform.position = transform.position;
+        //    if (grounded)
+        //    {
+        //        Destroy(LeapHitbox);
+        //        hitbox_exists = false;
+        //    }
+        //}
 
         if (Input.GetKey(KeyCode.C)) {
             charge += Time.deltaTime;
-            if (charge > .25)
+            if (charge > .5)
             {
                 speed = starting_speed / 4;
             }
@@ -54,6 +54,7 @@ public class Cat : Player
                 }
                 charge = 0;
                 grounded = false;
+                coyote_timer = -0.2f;
                 rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
             }
             else

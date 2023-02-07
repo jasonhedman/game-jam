@@ -12,7 +12,7 @@ public class Cat : Player
 
     void Attack()
     {
-        RaycastHit2D line = Physics2D.CircleCast(transform.position, 10f, new Vector2(direction, 0), 20, hitbox);
+        RaycastHit2D line = Physics2D.CircleCast(transform.position, 5f, new Vector2(direction, 0), 10, hitbox);
         //RaycastHit2D line = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 20, hitbox);
 
         if (line.collider != null)
@@ -26,7 +26,6 @@ public class Cat : Player
     void Update()
     {
         RunPhysics();
-        Debug.DrawRay(transform.position, new Vector2(direction, 0), Color.red, 20);
 
         if (Input.GetKey(jumpKey)) {
             charge += Time.deltaTime;
@@ -44,8 +43,6 @@ public class Cat : Player
                     speed = starting_speed * 2;
                 }
                 charge = 0;
-                grounded = false;
-                rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
             }
             else
             {

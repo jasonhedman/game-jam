@@ -44,20 +44,16 @@ public abstract class Player : MonoBehaviour
         }
     }
 
-    // is this a problem that theyre private?
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Stage"))
         {
-<<<<<<< Updated upstream
             coyote_timer = 0.2f;
-=======
-            if (cayote_timer < -1)
+            if (coyote_timer < -1)
             {
-                cayote_timer = 0;
+                coyote_timer = 0;
             }
-            else cayote_timer = 0.1f;
->>>>>>> Stashed changes
+            else coyote_timer = 0.1f;
         }
     }
 
@@ -77,7 +73,7 @@ public abstract class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") || (collision.gameObject.CompareTag("Player") && cayote_timer <= 0))
         {
             grounded = true;
-            cayote_timer = 0.1f;
+            coyote_timer = 0.1f;
 
             if (transform.position.x > collision.gameObject.transform.position.x)
             {

@@ -11,11 +11,31 @@ public class Mouse : Player
         RunPhysics();
     }
 
+<<<<<<< Updated upstream
     protected override void AirMove()
     {
         speed += 1;
         direction *= -1f;
         sr.flipX = !sr.flipX;
+=======
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            //Vector3 ray_start = new Vector3(rb.position.x, rb.position.y - , 0);
+            //RaycastHit2D floor = Physics2D.Raycast(ray_start, Vector2.down, 0.2f);
+
+            if (grounded)
+            {
+                grounded = false;
+                rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
+            }
+            else
+            {
+                speed += 1;
+                direction *= -1f;
+                sr.flipX = !sr.flipX;
+            }
+        }
+>>>>>>> Stashed changes
     }
 }
 

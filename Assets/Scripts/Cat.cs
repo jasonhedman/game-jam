@@ -6,36 +6,27 @@ public class Cat : Player
 {
     internal float charge = 0;
     internal bool hitbox_exists = false;
+    internal float attack_timer = 0;
 
-    public GameObject LeapHitbox;
+    public LayerMask hitbox;
 
     void Attack()
     {
-        speed = Mathf.Max(starting_speed, speed);
-        //Instantiate(LeapHitbox);
-        //hitbox_exists = true;
-        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), LeapHitbox.GetComponent<Collider2D>());
+        //RaycastHit2D swipe = Physics2D.CircleCast(transform.position, 10f, new Vector2(direction, 0), 20, hitbox);
+        RaycastHit2D line = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 20, hitbox);
 
-        //for (int i = 0; i < 9; i++) {
-        //    Vector3 angle = Vector2.down;
-        //    RaycastHit2D down = Physics2D.Raycast(transform.position, angle, 3);
-        //}
+        if (line.collider != null)
+        {
+            Debug.Log(line.collider.gameObject);
+            Destroy(line.collider.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         RunPhysics();
-
-        //if (hitbox_exists)
-        //{
-        //    LeapHitbox.transform.position = transform.position;
-        //    if (grounded)
-        //    {
-        //        Destroy(LeapHitbox);
-        //        hitbox_exists = false;
-        //    }
-        //}
+        Debug.DrawRay(transform.position, new Vector2(direction, 0), Color.red, 20);
 
         if (Input.GetKey(KeyCode.C)) {
             charge += Time.deltaTime;
@@ -54,7 +45,6 @@ public class Cat : Player
                 }
                 charge = 0;
                 grounded = false;
-                //coyote_timer = -0.2f;
                 rb.velocity = new Vector3(rb.velocity.x, jump_height, 0);
             }
             else

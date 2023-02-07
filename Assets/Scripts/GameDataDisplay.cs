@@ -10,12 +10,12 @@ public class GameDataDisplay : MonoBehaviour
     public float timeRemaining = 60;
     public bool timerOn = false;
 
-    public TMP_Text score;
-    public int mouseScore = 0;
-    public int catScore = 0;
+    //public TMP_Text score;
+    //public int mouseScore = 0;
+    //public int catScore = 0;
 
-    public TMP_Text level;
-    public int levelCount = 1;
+    //public TMP_Text level;
+    //public int levelCount = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +29,9 @@ public class GameDataDisplay : MonoBehaviour
     {
         timerRun();
 
-        score.text = string.Format("{0} : {1}", catScore, mouseScore);
+        //score.text = string.Format("{0} : {1}", catScore, mouseScore);
 
-        level.text = string.Format("Level {0}", levelCount);
+        //level.text = string.Format("Level {0}", levelCount);
     }
 
     void timerRun()
@@ -46,9 +46,9 @@ public class GameDataDisplay : MonoBehaviour
 
             else
             {
-                levelFinished(true);
-                timeRemaining = 60;
-                timerOn = true;
+                //levelFinished(true);
+                timeRemaining = 0;
+                timerOn = false;
             }
 
             if (timeRemaining < 10)
@@ -66,7 +66,7 @@ public class GameDataDisplay : MonoBehaviour
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void levelFinished(bool mouseWin)
+    /*void levelFinished(bool mouseWin)
     {
         if (mouseWin)
         {
@@ -76,5 +76,5 @@ public class GameDataDisplay : MonoBehaviour
         {
             catScore++;
         }
-    }
+    }*/
 }

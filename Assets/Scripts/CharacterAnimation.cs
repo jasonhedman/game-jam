@@ -58,33 +58,18 @@ public class CharacterAnimation : MonoBehaviour
             characterRenderer.sprite = jumpFrames[i];
             yield return new WaitForSeconds(1 / jumpFPS);
         }
-    }
-
-    protected IEnumerator AnimateLand()
-    {
-        for (int i = 0; i < landFrames.Length; i++)
-        {
-            characterRenderer.sprite = landFrames[i];
-            yield return new WaitForSeconds(1 / landFPS);
-        }
         walkAnimation = StartCoroutine(AnimateWalk());
     }
 
     protected IEnumerator AnimateAir()
     {
-        for(int i = 0; i < airFrames.Length; i++)
+        StopCoroutine(walkAnimation);
+        for (int i = 0; i < airFrames.Length; i++)
         {
             characterRenderer.sprite = airFrames[i];
             yield return new WaitForSeconds(1 / airFPS);
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Stage"))
-        {
-            StartCoroutine(AnimateLand());
-        }
+        walkAnimation = StartCoroutine(AnimateWalk());
     }
 
     bool IsGrounded()

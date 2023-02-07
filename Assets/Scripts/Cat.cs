@@ -50,7 +50,7 @@ public class Cat : Player
             else
             {
                 Attack();
-                attack_timer = 0.5f;
+                //attack_timer = 0.5f;
                 speed = Mathf.Max(starting_speed, speed);
             }
         }

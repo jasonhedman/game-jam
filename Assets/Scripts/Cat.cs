@@ -12,8 +12,8 @@ public class Cat : Player
 
     void Attack()
     {
-        //RaycastHit2D swipe = Physics2D.CircleCast(transform.position, 10f, new Vector2(direction, 0), 20, hitbox);
-        RaycastHit2D line = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 20, hitbox);
+        RaycastHit2D line = Physics2D.CircleCast(transform.position, 10f, new Vector2(direction, 0), 20, hitbox);
+        //RaycastHit2D line = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 20, hitbox);
 
         if (line.collider != null)
         {
@@ -28,14 +28,14 @@ public class Cat : Player
         RunPhysics();
         Debug.DrawRay(transform.position, new Vector2(direction, 0), Color.red, 20);
 
-        if (Input.GetKey(KeyCode.C)) {
+        if (Input.GetKey(jumpKey)) {
             charge += Time.deltaTime;
             if (charge > .5)
             {
                 speed = starting_speed / 4;
             }
         }
-        else if (Input.GetKeyUp(KeyCode.C))
+        else if (Input.GetKeyUp(jumpKey))
         {
             if (grounded)
             {

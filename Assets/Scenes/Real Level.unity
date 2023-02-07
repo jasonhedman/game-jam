@@ -1991,6 +1991,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 5304085839188192186, guid: 3fc7f31227ca044d9b4e7117b805b921, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc7f31227ca044d9b4e7117b805b921, type: 3}
 --- !u!1001 &1457912252
@@ -2164,6 +2168,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cb0cc6261cb54300acdc2beccf8cf2f, type: 3}
+--- !u!1 &1502761140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502761141}
+  - component: {fileID: 1502761143}
+  m_Layer: 6
+  m_Name: Hurtbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1502761141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502761140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1708162445}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1502761143
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502761140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5819931, y: 0.6864964, z: 1}
+  m_Center: {x: 0.034833908, y: -0.15675187, z: 0}
 --- !u!1001 &1536742022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2694,6 +2743,11 @@ PrefabInstance:
 --- !u!1 &1708162442 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5304085839188192186, guid: 3fc7f31227ca044d9b4e7117b805b921, type: 3}
+  m_PrefabInstance: {fileID: 1411308754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1708162445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3973892042014944866, guid: 3fc7f31227ca044d9b4e7117b805b921, type: 3}
   m_PrefabInstance: {fileID: 1411308754}
   m_PrefabAsset: {fileID: 0}
 --- !u!50 &1708162446
@@ -3805,17 +3859,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 3822082599398438027, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978081193930137562, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
+      propertyPath: LeapHitbox
+      value: 
+      objectReference: {fileID: 6515634821887658588, guid: 57c9d2c555c4a4a439ab9547a5f34adb, type: 3}
+    - target: {fileID: 5622388490987529708, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622388490987529708, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622388490987529708, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8805380314222401217, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8805380314222401217, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.9643397
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805380314222401217, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.2046368
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805380314222401217, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.077576
+      value: 6.9878
       objectReference: {fileID: 0}
     - target: {fileID: 8805380314222401217, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.6675997
+      value: -5.6225
       objectReference: {fileID: 0}
     - target: {fileID: 8805380314222401217, guid: 526026eb21df248cea41fa8bf252f9e1, type: 3}
       propertyPath: m_LocalPosition.z

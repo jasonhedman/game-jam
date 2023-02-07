@@ -34,27 +34,20 @@ public class Cat : Player
                 speed = starting_speed / 4;
             }
         }
-        else if (Input.GetKeyUp(jumpKey))
+        if (!grounded)
         {
-            if (grounded)
+            if (charge > 1.5)
             {
-                if (charge > 1.5)
-                {
-                    speed = starting_speed * 2;
-                }
-                charge = 0;
+                speed = starting_speed * 2;
             }
-            else
-            {
-                Attack();
-                //attack_timer = 0.5f;
-                speed = Mathf.Max(starting_speed, speed);
-            }
+            charge = 0;
         }
     }
 
     protected override void AirMove()
     {
-        
+        Attack();
+        attack_timer = 0.5f;
+        speed = Mathf.Max(starting_speed, speed);
     }
 }

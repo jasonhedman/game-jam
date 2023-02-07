@@ -49,21 +49,52 @@ public abstract class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Stage"))
         {
+<<<<<<< Updated upstream
             coyote_timer = 0.2f;
+=======
+            if (cayote_timer < -1)
+            {
+                cayote_timer = 0;
+            }
+            else cayote_timer = 0.1f;
+>>>>>>> Stashed changes
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Stage"))
         {
             grounded = true;
             coyote_timer = 0;
         }
-        if (collision.gameObject.CompareTag("Wall"))
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(gameObject);
+        if (collision.gameObject.CompareTag("Wall") || (collision.gameObject.CompareTag("Player") && cayote_timer <= 0))
         {
-            direction *= -1;
-            sr.flipX = !sr.flipX;
+            grounded = true;
+            cayote_timer = 0.1f;
+
+            if (transform.position.x > collision.gameObject.transform.position.x)
+            {
+                if (direction == -1) {
+                    direction = 1;
+                    sr.flipX = !sr.flipX;
+                }
+            }
+            else
+            {
+                if (direction == 1)
+                {
+                    direction = -1;
+                    sr.flipX = !sr.flipX;
+                }
+            }
+            //Debug.Log(collision.gameObject);
         }
     }
 }

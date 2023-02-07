@@ -13,7 +13,7 @@ public abstract class Player : MonoBehaviour
     internal SpriteRenderer sr;
 
     internal bool grounded = true;
-    internal float cayote_timer = 0.25f;
+    internal float coyote_timer = 0.25f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +26,10 @@ public abstract class Player : MonoBehaviour
 
     public void RunPhysics()
     {
-        if (cayote_timer > 0)
+        if (coyote_timer > 0)
         {
-            cayote_timer -= Time.deltaTime;
-            if (!(cayote_timer > 0))
+            coyote_timer -= Time.deltaTime;
+            if (!(coyote_timer > 0))
             {
                 grounded = false;
             }
@@ -49,7 +49,7 @@ public abstract class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Stage"))
         {
-            cayote_timer = 0.2f;
+            coyote_timer = 0.2f;
         }
     }
 
@@ -58,7 +58,7 @@ public abstract class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Stage"))
         {
             grounded = true;
-            cayote_timer = 0;
+            coyote_timer = 0;
         }
         if (collision.gameObject.CompareTag("Wall"))
         {

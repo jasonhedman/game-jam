@@ -66,7 +66,11 @@ public abstract class Player : MonoBehaviour
     bool IsGrounded()
     {
         float distToGround = GetComponent<BoxCollider2D>().bounds.extents.y;
+<<<<<<< Updated upstream
         RaycastHit2D floorHit = Physics2D.Raycast(transform.position, Vector2.down, distToGround + 0.25f);
+=======
+        RaycastHit2D floorHit = Physics2D.Raycast(transform.position, Vector2.down, distToGround + 0.1f);
+>>>>>>> Stashed changes
         return floorHit.collider != null;
     }
 }
